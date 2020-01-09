@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 db36d2451d968c5db490a816459ccf6177990142 ruclion <ruclion@mail.163.com> 1578590550 +0800	commit (initial): init from jingbei b.py file, has whole model and data and train architecture, without attention img and max, without validation and tensorboard, without ckpt

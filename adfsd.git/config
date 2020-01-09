@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = https://git.maybe.io/russell19/attention_test_tf2.x.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
