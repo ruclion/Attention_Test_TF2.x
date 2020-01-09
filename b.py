@@ -113,7 +113,19 @@ class MyModel(tf.keras.Model):
         x = self.decoder(timesteps, constants=[x])
         output = x[:,:,:-length]
         attention_weights = x[:,:,-length:]
-        tf.print('\n', attention_weights[0])
+        
+        attention_img = attention_weights[0] # (out_lenth lenth)
+        tf.print(attention_img, output_stream='file:///home/hujk17/Attention_Test_TF2.x/attention_img_values.txt', summarize=-1)
+        max_value_every_output_step_attention_img = tf.reduce_max(attention_img, axis=-1)
+        tf.print(max_value_every_output_step_attention_img, output_stream='file:///home/hujk17/Attention_Test_TF2.x/max_value_every_output_step_attention_img.txt', summarize=-1)
+        max_pos_every_output_step_attention_img = tf.argmax(attention_img, axis=-1)
+        tf.print(max_pos_every_output_step_attention_img, output_stream='file:///home/hujk17/Attention_Test_TF2.x/max_pos_every_output_step_attention_img.txt', summarize=-1)
+        
+        attention_img_T = tf.transpose(attention_img) # (lenth out_lenth)
+        max_value_every_input_step_attention_img = tf.reduce_max(attention_img_T, axis=-1)
+        tf.print(max_value_every_input_step_attention_img, output_stream='file:///home/hujk17/Attention_Test_TF2.x/max_value_every_input_step_attention_img.txt', summarize=-1)
+        max_pos_every_input_step_attention_img = tf.argmax(attention_img, axis=-1)
+        tf.print(max_pos_every_input_step_attention_img, output_stream='file:///home/hujk17/Attention_Test_TF2.x/max_pos_every_input_step_attention_img.txt', summarize=-1)
         return output
 
 model = MyModel()
